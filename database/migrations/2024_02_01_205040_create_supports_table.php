@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('subject');
             $table->enum('status', ['a', 'p', 'c']);
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
         });
     }

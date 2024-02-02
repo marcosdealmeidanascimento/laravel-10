@@ -73,9 +73,9 @@ class SupportController extends Controller
         return redirect()->route('supports.index');
     }
 
-    public function destroy(string|int $id): void
+    public function destroy(string|int $id)
     {
         $this->service->delete($id);
-        redirect()->route('supports.index');
+        return redirect()->route('supports.index');
     }
 }

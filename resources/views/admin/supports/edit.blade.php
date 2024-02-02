@@ -1,10 +1,6 @@
 <h1>Detalhes da dúvida: {{ $support->id }}</h1>
 
-@if ($errors->any())
-    @foreach($errors->all() as $error)
-        <p>{{ $error }}</p>
-    @endforeach
-@endif
+<x-alert />
 
 <ul>
     <li>
@@ -21,11 +17,9 @@
 <h1>Editar Dúvida</h1>
 
 <form action="{{ route('supports.update', $support->id) }}" method="POST">
-    @csrf()
-    @method('Put')
-    <input type="text" placeholder="Assunto" name="subject" value="{{ $support->subject }}">
-    <textarea name="body" cols="30" rows="5" placeholder="Descrição">{{ $support->body }}</textarea>
-    <button type="submit">Editar</button>
+    @include('admin.supports.partials.form', [
+        'support' => $support,
+    ])
 </form>
 
 <form action="{{ route('supports.destroy', $support->id) }}" method="POST">
